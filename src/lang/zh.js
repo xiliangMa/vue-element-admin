@@ -1,6 +1,9 @@
 export default {
   route: {
     dashboard: '首页',
+    host: '主机',
+    cluster: '集群',
+    user: '用户',
     documentation: '文档',
     guide: '引导页',
     permission: '权限测试页',

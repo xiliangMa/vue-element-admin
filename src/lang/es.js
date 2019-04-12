@@ -1,6 +1,9 @@
 export default {
   route: {
     dashboard: 'Panel de control',
+    host: 'Host',
+    cluster: 'Cluster',
+    user: 'User',
     documentation: 'Documentación',
     guide: 'Guía',
     permission: 'Permisos',
