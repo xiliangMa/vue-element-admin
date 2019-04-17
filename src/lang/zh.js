@@ -4,6 +4,7 @@ export default {
     host: '主机',
     cluster: '集群',
     user: '用户',
+    promotion: '活动',
     documentation: '文档',
     guide: '引导页',
     permission: '权限测试页',
@@ -127,13 +128,46 @@ export default {
     author: '作者',
     readings: '阅读数',
     status: '状态',
-    actions: '操作',
+
     edit: '编辑',
     publish: '发布',
     draft: '草稿',
     delete: '删除',
     cancel: '取 消',
     confirm: '确 定'
+  },
+  common: {
+    delete: '删 除',
+    cancel: '取 消',
+    confirm: '确 定',
+    actions: '操作',
+    edit: '编辑',
+    search: '搜索',
+    add: '添加',
+    export: '导出'
+  },
+  host: {
+    id: 'ID',
+    hostname: 'Name',
+    rid: 'Rid',
+    rancherId: 'RancherId',
+    clusterId: 'ClusterId',
+    ownerId: 'OwnerId',
+    beginTime: '开始时间',
+    endTime: '结束时间',
+    status: '状态'
+  },
+  cluster: {
+    id: 'ID',
+    hostname: 'Name',
+    rid: 'Rid',
+    rancherId: 'RancherId',
+    clusterId: 'ClusterId',
+    ownerId: 'OwnerId',
+    beginTime: '开始时间',
+    endTime: '结束时间',
+    status: '状态',
+    Profit: 'Profit'
   },
   errorLog: {
     tips: '请点击右上角bug小图标',

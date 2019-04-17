@@ -151,6 +151,18 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/promo',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/user/index'),
+        name: 'Activity',
+        meta: { title: 'promotion', icon: 'documentation', noCache: true }
+      }
+    ]
+  },
   // {
   //   path: '/permission',
   //   component: Layout,

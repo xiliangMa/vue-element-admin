@@ -199,3 +199,10 @@ code {
 .multiselect--active {
   z-index: 1000 !important;
 }
+
+.overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}

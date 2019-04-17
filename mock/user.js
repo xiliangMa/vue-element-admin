@@ -1,7 +1,7 @@
 
 const tokens = {
   admin: {
-    token: 'admin-token'
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NjYyNjUxNTUsImp0aSI6ImFkbWluIiwiaXNzIjoiQml0Y2giLCJuYmYiOjE1NTU0NjUxNTV9.opY5LiQcVEC6Hd1oV8VZpJkIuB-t_OwTSdeakUUR_Vc'
   },
   editor: {
     token: 'editor-token'
@@ -41,7 +41,7 @@ export default [
       }
 
       return {
-        code: 20000,
+        code: 200,
         data: token
       }
     }
@@ -64,7 +64,7 @@ export default [
       }
 
       return {
-        code: 20000,
+        code: 200,
         data: info
       }
     }
@@ -76,7 +76,7 @@ export default [
     type: 'post',
     response: _ => {
       return {
-        code: 20000,
+        code: 200,
         data: 'success'
       }
     }
