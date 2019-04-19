@@ -33,7 +33,7 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      login({ name: username.trim(), pwd: password }).then(response => {
+      login({ username: username.trim(), pwd: password }).then(response => {
         const { data } = response
         console.log(data)
         commit('SET_TOKEN', data)
@@ -49,7 +49,13 @@ const actions = {
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
-        const { data } = response
+        // const { data } = response
+        const data = {
+          roles: ['admin'],
+          introduction: 'I am a super administrator',
+          avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+          name: 'Super Admin'
+        }
 
         if (!data) {
           reject('Verification failed, please Login again.')

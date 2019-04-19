@@ -157,7 +157,7 @@ export const asyncRoutes = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/user/index'),
+        component: () => import('@/views/promotion/index'),
         name: 'Activity',
         meta: { title: 'promotion', icon: 'documentation', noCache: true }
       }

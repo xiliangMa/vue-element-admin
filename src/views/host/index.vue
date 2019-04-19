@@ -92,7 +92,7 @@
           <!--<el-button v-if="row.status!='published'" size="mini" type="success" @click="handleModifyStatus(row,'published')">-->
           <!--{{ $t('host.publish') }}-->
           <!--</el-button>-->
-          <el-button v-if="row.status!='deleted'" size="mini" type="danger" @click="handleModifyStatus(row,'deleted')">
+          <el-button size="mini" type="danger" @click="handleDelete(row,'deleted')">
             {{ $t('common.delete') }}
           </el-button>
         </template>
@@ -150,7 +150,7 @@
 
 <script>
 import { fetchPv, createArticle, updateArticle } from '@/api/article'
-import { getHostList } from '@/api/host'
+import { getHostList, deleteHost } from '@/api/host'
 import waves from '@/directive/waves' // Waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
@@ -242,7 +242,7 @@ export default {
         // Just to simulate the time of the request
         setTimeout(() => {
           this.listLoading = false
-        }, 1.5 * 1000)
+        }, 0.1 * 1000)
       })
     },
     handleFilter() {
@@ -341,14 +341,27 @@ export default {
       })
     },
     handleDelete(row) {
-      this.$notify({
-        title: '成功',
-        message: '删除成功',
-        type: 'success',
-        duration: 2000
+      this.$confirm('此操作将执行永久删除, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        deleteHost(row.Id)
+          .then(respData => {
+            console.log(respData)
+            const index = this.list.indexOf(row)
+            this.list.splice(index, 1)
+          })
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
       })
-      const index = this.list.indexOf(row)
-      this.list.splice(index, 1)
     },
     handleFetchPv(pv) {
       fetchPv(pv).then(response => {

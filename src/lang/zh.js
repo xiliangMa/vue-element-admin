@@ -159,7 +159,7 @@ export default {
   },
   cluster: {
     id: 'ID',
-    hostname: 'Name',
+    clustername: 'Name',
     rid: 'Rid',
     rancherId: 'RancherId',
     clusterId: 'ClusterId',
@@ -168,6 +168,24 @@ export default {
     endTime: '结束时间',
     status: '状态',
     Profit: 'Profit'
+  },
+  user: {
+    id: 'ID',
+    username: 'UserName',
+    rtype: '注册类型',
+    mobile: '手机号',
+    email: '邮箱',
+    registime: '注册时间',
+    status: '状态',
+    address: '地址'
+  },
+  promo: {
+    id: 'ID',
+    promoname: '活动名称',
+    content: '活动说明',
+    begindate: '开始时间',
+    enddate: '结束时间',
+    status: '状态'
   },
   errorLog: {
     tips: '请点击右上角bug小图标',

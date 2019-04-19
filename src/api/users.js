@@ -1,10 +1,15 @@
 import request from '@/utils/request'
 
-const userUrl = 'http://39.106.101.34:8080/v1'
-
-export function getUsers(page, size) {
+export function getUsers(cond) {
   return request({
-    url: userUrl + `/users/?page=${page}&number=${size}`,
+    url: `/users/?page=${cond.page}&number=${cond.limit}`,
     method: 'post'
+  })
+}
+
+export function deleteUser(userid) {
+  return request({
+    url: '/users/' + userid,
+    method: 'delete'
   })
 }
