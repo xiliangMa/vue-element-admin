@@ -2,10 +2,10 @@
   <div class="app-container">
     <div class="filter-container">
       <el-input v-model="listQuery.title" :placeholder="$t('host.title')" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-      <el-select v-model="listQuery.importance" :placeholder="$t('host.importance')" clearable style="width: 90px" class="filter-item">
+      <el-select v-model="listQuery.importance" :placeholder="$t('common.importance')" clearable style="width: 90px" class="filter-item">
         <el-option v-for="item in importanceOptions" :key="item" :label="item" :value="item" />
       </el-select>
-      <el-select v-model="listQuery.type" :placeholder="$t('host.type')" clearable class="filter-item" style="width: 130px">
+      <el-select v-model="listQuery.type" :placeholder="$t('common.type')" clearable class="filter-item" style="width: 130px">
         <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key" />
       </el-select>
       <el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
@@ -98,35 +98,33 @@
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
-        <el-form-item :label="$t('cluster.type')" prop="type">
+        <el-form-item :label="$t('common.type')" prop="type">
           <el-select v-model="temp.type" class="filter-item" placeholder="Please select">
             <el-option v-for="item in calendarTypeOptions" :key="item.key" :label="item.display_name" :value="item.key" />
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('cluster.date')" prop="timestamp">
+        <el-form-item :label="$t('common.date')" prop="timestamp">
           <el-date-picker v-model="temp.timestamp" type="datetime" placeholder="Please pick a date" />
         </el-form-item>
-        <el-form-item :label="$t('cluster.title')" prop="title">
+        <el-form-item :label="$t('common.title')" prop="title">
           <el-input v-model="temp.title" />
         </el-form-item>
-        <el-form-item :label="$t('cluster.status')">
+        <el-form-item :label="$t('common.status')">
           <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
             <el-option v-for="item in statusOptions" :key="item" :label="item" :value="item" />
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('cluster.importance')">
-          <el-rate v-model="temp.importance" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" :max="3" style="margin-top:8px;" />
-        </el-form-item>
-        <el-form-item :label="$t('cluster.remark')">
+
+        <el-form-item :label="$t('common.remark')">
           <el-input v-model="temp.remark" :autosize="{ minRows: 2, maxRows: 4}" type="textarea" placeholder="Please input" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
-          {{ $t('host.cancel') }}
+          {{ $t('common.cancel') }}
         </el-button>
         <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
-          {{ $t('host.confirm') }}
+          {{ $t('common.confirm') }}
         </el-button>
       </div>
     </el-dialog>
@@ -137,7 +135,7 @@
         <el-table-column prop="pv" label="Pv" />
       </el-table>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogPvVisible = false">{{ $t('host.confirm') }}</el-button>
+        <el-button type="primary" @click="dialogPvVisible = false">{{ $t('common.confirm') }}</el-button>
       </span>
     </el-dialog>
   </div>
@@ -188,8 +186,8 @@ export default {
       total: 0,
       listLoading: true,
       listQuery: {
-        page: 0,
-        limit: 20,
+        page: 1,
+        limit: this.$store.getters.config.pager.perPageCount,
         importance: undefined,
         title: undefined,
         type: undefined,

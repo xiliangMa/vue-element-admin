@@ -1,8 +1,11 @@
 import request from '@/utils/request'
 
-export function getClusterList() {
+import { getFromNumber } from './dataproclib'
+
+export function getClusterList(cond) {
+  const from = getFromNumber(cond.page, cond.limit)
   return request({
-    url: '/clusters',
+    url: `/clusters?from=${from}&limit=${cond.limit}`,
     method: 'post'
   })
 }
